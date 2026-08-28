@@ -21,9 +21,6 @@ int factorial(int n) {
             result *= i; // multiply until the last number
         }
     }
-    else if (n < 1) {
-        return 0;
-    }
     return result;
 }
 
@@ -48,7 +45,7 @@ int min_value(const int arr[], int size) {
     // TODO: Add code to find the minimum value.
     int minimum = arr[0]; // similar idea to max
     for (int i = 0; i < size; i++) {
-        if (minimum < arr[i]) minimum = arr[i];
+        if (minimum > arr[i]) minimum = arr[i];
     }
     return minimum;
 }
@@ -69,7 +66,7 @@ int sum_of_digits(int n) {
     int sum = 0;
     int i = 1;
     do {
-        sum = (n / i) % (i *= 10);
+        sum += (n / i) % (i *= 10);
     } while (n / i != 0);
     return sum;
 }
@@ -77,7 +74,7 @@ int sum_of_digits(int n) {
 // Exercise 8: reverse a string
 std::string reverse_string(const std::string& text) {
     std::string reversed = "";
-    for (int i = text.size(); i > 0; i--) {
+    for (int i = text.size(); i >= 0; i--) {
         reversed += text[i];
     }
     return reversed;
@@ -128,8 +125,7 @@ int power(int base, int exponent) {
 // Exercise 12: nth Fibonacci number
 int fibonacci(int n) {
     // TODO: Add code to compute the nth Fibonacci number.
-    int a1, a3 = 0;
-    int a2 = 1;
+    int a1 = 0; int a2 = 1; int a3 = 0;
     for (int i = 0; i < n; i++) {
         a3 = a2 + a1;
         a1 = a2;
