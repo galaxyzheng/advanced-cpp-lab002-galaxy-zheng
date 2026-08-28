@@ -75,10 +75,10 @@ int sum_of_digits(int n) {
 // Exercise 8: reverse a string
 std::string reverse_string(const std::string& text) {
     std::string reversed;
-    for (int i = text.size(); i >= 0; i--) {
+    for (int i = text.size() - 1; i >= 0; i--) { // assuming there is a null terminator at the last index, start from -1
         reversed += text[i]; // add characters from given string in reverse order
     }
-    return reversed.data(); // maybe the output needs to match the same format too?
+    return reversed + '\0'; // maybe the output needs a null terminator?
 }
 
 // Exercise 9: count vowels in a string
