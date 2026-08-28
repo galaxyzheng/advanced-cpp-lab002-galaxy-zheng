@@ -66,16 +66,17 @@ int sum_of_digits(int n) {
     int sum = 0;
     int i = 1;
     do {
-        sum += (n / i) % (i *= 10);
+        sum += (n / i) % 10; // left and right side cut
+        i *= 10; // move to next digit
     } while (n / i != 0);
     return sum;
 }
 
 // Exercise 8: reverse a string
 std::string reverse_string(const std::string& text) {
-    std::string reversed = "";
+    std::string reversed;
     for (int i = text.size(); i >= 0; i--) {
-        reversed += text[i];
+        reversed += text[i]; // add characters from given string in reverse order
     }
     return reversed;
 }
@@ -84,8 +85,8 @@ std::string reverse_string(const std::string& text) {
 int count_vowels(const std::string& text) {
     // TODO: Add code to count vowels.
     int count = 0;
-    std::string vowels = "aeiou";
-    for (int i = 0; i < text.size(); i++) {
+    std::string vowels = "aeiou"; // store every vowel
+    for (int i = 0; i < text.size(); i++) { // check each character in string against every vowel
         if (text[i] == vowels[0] 
         || text[i] == vowels[1]
         || text[i] == vowels[2]
@@ -100,12 +101,12 @@ int count_vowels(const std::string& text) {
 // Exercise 10: determine whether a number is prime
 bool is_prime(int n) {
     // Add code
-    if (n < 2) {
+    if (n < 2) { // what if input is negative, 0, or 1
         return false;
     }
-    int highbound = n/2;
+    int highbound = n/2; // much higher than guaranteed maximum factor
     for (int i = 2; i < highbound; i++) { 
-        if (n % i == 0) {
+        if (n % i == 0) { // test divide every factor
             return false;
         }
     }
@@ -115,8 +116,8 @@ bool is_prime(int n) {
 // Exercise 11: power function
 int power(int base, int exponent) {
     // TODO: Add code to compute base^exponent.
-    int result = 1;
-    for (int i = 0; i < exponent; i++) { 
+    int result = 1; // any number to 0 power is 1
+    for (int i = 0; i < exponent; i++) { // finds power by multiplying (exponent) times
         result *= base;
     }
     return result;
@@ -125,11 +126,14 @@ int power(int base, int exponent) {
 // Exercise 12: nth Fibonacci number
 int fibonacci(int n) {
     // TODO: Add code to compute the nth Fibonacci number.
-    int a1 = 0; int a2 = 1; int a3 = 0;
-    for (int i = 0; i < n; i++) {
-        a3 = a2 + a1;
-        a1 = a2;
-        a2 = a3;
+    int a0 = 0; 
+    int a1 = 1; 
+    int fin = 0; // zeroth value
+    if (n >= 1) {fin = a1 + a0;} // start with 0 1 1 if 0 does not need to be returned
+    for (int i = 2; i < n; i++) { // begin sequence by looking for 3rd number, as 1st = 2nd = 1
+        fin = a1 + a0;
+        a0 = a1; // shift values (will be 1 1 2 for n = 3)
+        a1 = fin;
     }
-    return a3;
+    return fin;
 }
