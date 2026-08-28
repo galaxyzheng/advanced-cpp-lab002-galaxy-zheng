@@ -78,7 +78,7 @@ std::string reverse_string(const std::string& text) {
     for (int i = text.size(); i >= 0; i--) {
         reversed += text[i]; // add characters from given string in reverse order
     }
-    return reversed;
+    return reversed.data(); // maybe the output needs to match the same format too?
 }
 
 // Exercise 9: count vowels in a string
@@ -130,7 +130,7 @@ int fibonacci(int n) {
     int a1 = 1; 
     int fin = 0; // zeroth value
     if (n >= 1) {fin = a1 + a0;} // start with 0 1 1 if 0 does not need to be returned
-    for (int i = 2; i < n; i++) { // begin sequence by looking for 3rd number, as 1st = 2nd = 1
+    for (int i = 2; i <= n; i++) { // begin sequence by looking for 3rd number, as 1st = 2nd = 1
         fin = a1 + a0;
         a0 = a1; // shift values (will be 1 1 2 for n = 3)
         a1 = fin;
