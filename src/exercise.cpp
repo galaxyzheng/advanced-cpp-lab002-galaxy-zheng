@@ -78,7 +78,7 @@ std::string reverse_string(const std::string& text) {
     for (int i = text.size()-1; i >= 0; i--) { // assuming there is a null terminator at the last index, start from -1
         reversed += text[i]; // add characters from given string in reverse order
     }
-    reversed += '\0'; // maybe the output needs a null terminator?
+    // reversed += '\0'; // maybe the output needs a null terminator?
     return reversed;
 }
 
